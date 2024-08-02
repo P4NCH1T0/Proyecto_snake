@@ -5,7 +5,7 @@ let foodX , foodY;
 let snakeX =5, snakeY=10;
 let snakeBody = [];
 let velocityX = 0 , velocityY = 0;
-let setIntervalID
+let setIntervalID;
 
 const changefoodposition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
@@ -62,6 +62,9 @@ const initGame = () => {
 
     for(let i=0; i < snakeBody.length; i++){
         htmlMarkup += `<div class = "head" style ="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
+        if( i !== 0 && snakeBody[0][1] === snakeBody [i][1]  && snakeBody[0][0] === snakeBody [i][0]){
+            gameover = true;
+        }
     }
     
     playBoard.innerHTML = htmlMarkup;
